@@ -1,0 +1,143 @@
+:root{
+    --primary-color: rgba(0, 71, 255, 0.9);
+    --secundary-color: #fff;
+
+
+    --button-pri-color: rgba(0, 71, 255, 0.9);
+    --button-pri-text: #fff;
+
+    --button-sec-color: #fff;
+    --button-sec-text: rgba(0, 71, 255, 0.9);
+
+    --buton-terc-color: #fff;
+    --button-terc-text: rgba(0, 71, 255, 0.9);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+}
+
+header{
+    height: 70px;
+    width: 100%;
+    box-shadow: 0px 2px 4px  rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+    header .container-logo{
+        margin-left: 3%;
+        height: 100%;
+        min-width: 15%;
+        flex: 0;
+
+        display: flex;
+        align-items: center;
+    }
+
+    header img{
+        max-width: 100%;
+    }
+
+    header .buttons{
+        height: 100%;
+        flex: 1;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 4%;
+        padding-right: 2%;
+    }
+    header .login-buttons {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+
+main{
+    height: calc(100vh - 130px);
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+
+    /* border: 1px solid #000; */
+}
+
+footer{
+    height: 60px;
+    background-color: var(--primary-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    font-size: 12px;
+
+    color: var(--secundary-color);
+    padding: 0px 50px;
+}
+
+    footer .terc-btn{
+        color: var(--secundary-color);
+        font-weight: 500;
+    }
+
+
+
+.primary-btn{
+    padding: 15px 30px;
+    background-color: var(--button-pri-color);
+    color: var(--button-pri-text);
+    border: 2px solid var(--button-pri-color);
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0px 3px;
+}
+
+.primary-btn:any-link{
+    text-decoration: none;
+}
+
+.secundary-btn{
+    padding: 15px 30px;
+    background-color: var(--button-sec-color);
+    color: var(--button-sec-text);
+    border: 2px solid var(--button-sec-text);
+    margin: 0px 3px;
+
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.secundary-btn:any-link{
+    text-decoration: none;
+}
+
+.terc-btn{
+    padding: 15px 30px;
+    background-color: var(--button-terc-color);
+    color: var(--button-terc-text);
+    border: 0px solid var(--button-terc-text);
+    margin: 0px 3px;
+
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.terc-btn:any-link{
+    text-decoration: none;
+}
+
+
