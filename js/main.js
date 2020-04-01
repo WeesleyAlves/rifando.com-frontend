@@ -34,7 +34,7 @@ var app = new Vue({
             home: 'home.html',
             explorar: '',
             cadastro: '',
-            login: '',
+            login: 'auth.html',
             suporte: '',
             sobre:'sobre.html',
             novarifa:''
