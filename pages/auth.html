@@ -25,28 +25,13 @@
    <main>
        <div class="container-form">
             <div class="container-buttons">
-                <a href="" class='primary-btn'>Login</a>
-                <a href="" class='secundary-btn'>Cadastro</a>
+                <a href="#login" id='desativado' >Login</a>
+                <a href="#cadastro" >Cadastro</a>
             </div>
 
-            <form id='form-login' action="">
-                <label for=""></label><input type="text">
-                <label for=""></label><input type="text">
-                <input type="submit" value="LOGAR">
-                <input type="button" value="Esqueceu a senha ?">
-            </form>
-
-            <form id='form-cadastro' action="">
-                <label for=""></label><input type="text">
-                <label for=""></label><input type="text">
-                <label for=""></label><input type="text">
-                <label for=""></label><input type="text">
-                <label for=""></label><input type="text">
-                <label for=""></label><input type="text">
-                <label for=""></label><input type="text">
-                <label for=""></label><input type="text">
-
-            </form>
+            <form-login></form-login>
+            <form-cadastro></form-cadastro>
+            
 
        </div>
       
@@ -54,6 +39,7 @@
 
     <footer-vue v-bind:link='links.suporte'></footer-vue>
 </div>
+    <script src="../js/components/auth.js"></script>
     <script src='../js/main.js'></script>
 </body>
 </html>

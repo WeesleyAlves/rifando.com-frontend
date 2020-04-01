@@ -33,7 +33,7 @@ var app = new Vue({
         links : {
             home: 'home.html',
             explorar: '',
-            cadastro: '',
+            cadastro: 'auth.html',
             login: 'auth.html',
             suporte: '',
             sobre:'sobre.html',

@@ -7,22 +7,98 @@ main{
 .container-form{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     box-shadow: 0px 4px 8px #9f9f9f;
-    min-width: 35%;
+    min-width: 30%;
     min-height: 70%;
 }
 
-    form {
-        min-height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .container-form .container-buttons{
+        flex: 0;
+        min-height: 40px;
+        width: 100%;
         justify-content: center;
+        align-items: center;        
+
+        display: flex;
+
     }
 
+    .container-buttons a{
+        width: 50%;
+        min-height: 100%;
+        color: var(--secundary-color);
+        background-color: var(--primary-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 0px;
+        font-weight: bold;
+    }
+    
+
+    .container-buttons a:any-link{
+        text-decoration: none;
+    }
+
+    #desativado{
+        color: var(--primary-color);
+        background-color: rgb(217, 226, 248);
+    }
+
+form {
+    flex: 1;
+    min-height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+    form label{
+        width: 100%;
+        font-size: 12px;
+        text-align: left;
+        margin-top: 10px;
+        margin-bottom: 3px;
+        color: #9f9f9f;
+        display: none;
+    }
+
+    form input{
+        width: 94%;
+        height: 35px;
+        padding-left: 5%;
+        border: 1px solid #bdbdbd;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        margin: 7px 0px;
+    }
+
+    form .primary-btn{
+        margin-top: 7%;
+    }
+
+    form .primary-btn:hover{
+        cursor: pointer;
+    }
+
+    form .terc-btn {
+        margin-top: 5px;
+        font-size: 12px;
+        text-transform: none;
+    }
+
+    form .terc-btn:hover{
+        cursor: pointer;
+        background-color: var(--secundary-color);
+    }
+
+#form-login{
+    display: none;
+}
 
 #form-cadastro{
-    display: none;
+    display: flex;
 }
