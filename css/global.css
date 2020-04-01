@@ -1,6 +1,8 @@
 :root{
-    --primary-color: rgba(0, 71, 255, 0.9);
+    --primary-color: rgba(0, 71, 255, 1);
     --secundary-color: #fff;
+    --hover-color-pri: rgb(0, 37, 131);
+    --hover-color-sec: #d8d8d8;
 
 
     --button-pri-color: rgba(0, 71, 255, 0.9);
@@ -62,6 +64,10 @@ header{
         align-items: center;
     }
 
+    header .terc-btn:hover{
+        color: var(--secundary-color)
+    }
+
 
 main{
     height: calc(100vh - 130px);
@@ -88,6 +94,7 @@ footer{
 
     footer .terc-btn{
         color: var(--secundary-color);
+        background-color: var(--primary-color);
         font-weight: 500;
     }
 
@@ -95,9 +102,9 @@ footer{
 
 .primary-btn{
     padding: 15px 30px;
-    background-color: var(--button-pri-color);
-    color: var(--button-pri-text);
-    border: 2px solid var(--button-pri-color);
+    background-color: var(--primary-color);
+    color: var(--secundary-color);
+    border: 2px solid var(--primary-color);
     font-size: 12px;
     font-weight: bold;
     text-transform: uppercase;
@@ -108,11 +115,15 @@ footer{
     text-decoration: none;
 }
 
+.primary-btn:hover{
+    background-color: var(--hover-color-pri);
+}
+
 .secundary-btn{
     padding: 15px 30px;
-    background-color: var(--button-sec-color);
-    color: var(--button-sec-text);
-    border: 2px solid var(--button-sec-text);
+    background-color: var(--secundary-color);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
     margin: 0px 3px;
 
     font-size: 12px;
@@ -124,11 +135,15 @@ footer{
     text-decoration: none;
 }
 
+.secundary-btn:hover{
+    background-color: var(--hover-color-sec);
+}
+
 .terc-btn{
     padding: 15px 30px;
-    background-color: var(--button-terc-color);
-    color: var(--button-terc-text);
-    border: 0px solid var(--button-terc-text);
+    background-color: var(--secundary-color);
+    color: var(--primary-color);
+    border: 0px solid var(--secundary-color);
     margin: 0px 3px;
 
     font-size: 12px;
@@ -138,6 +153,10 @@ footer{
 
 .terc-btn:any-link{
     text-decoration: none;
+}
+
+.terc-btn:hover{
+    background-color: var(--hover-color-pri);
 }
 
 

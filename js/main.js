@@ -1,10 +1,10 @@
 Vue.component('header-vue',{
-    props: ['link1', 'link2', 'link3'],
+    props: ['linkHome', 'link1', 'link2', 'link3', 'logo'],
     template: `
     <header>
         <div class='container-logo'>
-            <a href='index.html'>
-                <img src="assets/logo.png" alt="">
+            <a :href="linkHome">
+                <img :src="logo" alt="">
             </a>
         </div>
         <div class="buttons">
@@ -27,38 +27,31 @@ Vue.component('footer-vue', {
     </footer>`
 });
 
-Vue.component('main-home', {
-    props: ['titulo', 'texto', 'link1', 'link2'],
-    template:`
-    <main>
-        <div id="container-home">
-            <img src="assets/bilhetes.png">
-            <div id='container-content-home'>
-                <div id='triangulo'></div>
-                <div id='retangulo'>
-                    <h1>{{ titulo }}</h1>
-                    <p>{{ texto }}</p>
-                    <div class='buttons-home'>
-                        <a :href='link1' class='secundary-btn'>SAIBA MAIS</a>
-                        <a :href='link2' class='primary-btn'>INICIAR RIFA</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-    `
-})
-
 var app = new Vue({
     el: '#app',
     data: {
         links : {
+            home: 'home.html',
             explorar: '',
             cadastro: '',
             login: '',
             suporte: '',
-            sobre:'',
+            sobre:'sobre.html',
             novarifa:''
+        },
+
+        assets: {
+            global:{
+                logoheader: '../assets/logo.png',
+            },            
+            home: {
+                img1 : '../assets/bilhetes.png',
+            },
+            sobre: {
+                img1 : '../assets/pessoa1-edt.png',
+                img2 : '../assets/trevos.png',
+                img3 : '../assets/pessoa2-edt.png',
+            }
         },
 
         content : {
@@ -71,6 +64,27 @@ var app = new Vue({
                  diam nec ultrices fringilla. Praesent feugiat semper tincidunt. Nam 
                  tempor elit erat, sed pharetra magna fringilla non. Etiam tellus risus, 
                  fermentum sit amet vulputate luctus, euismod non ante.`,
+            },
+
+            sobre: {
+                titulo1 : 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+                titulo2 : 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+                titulo3 : 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+                texto1 :`Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                Animi alias officiis earum, inventore repellat repudiandae 
+                iure distinctio nobis deleniti asperiores, dicta saepe 
+                accusantium laudantium quis dolore aliquam exercitationem 
+                obcaecati sed!`,
+                texto2 :`Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                Animi alias officiis earum, inventore repellat repudiandae 
+                iure distinctio nobis deleniti asperiores, dicta saepe 
+                accusantium laudantium quis dolore aliquam exercitationem 
+                obcaecati sed!`,
+                texto3 :`Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                Animi alias officiis earum, inventore repellat repudiandae 
+                iure distinctio nobis deleniti asperiores, dicta saepe 
+                accusantium laudantium quis dolore aliquam exercitationem 
+                obcaecati sed!`
             }
         }
     }

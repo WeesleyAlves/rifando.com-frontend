@@ -60,16 +60,12 @@
 }
 
 .buttons-home .primary-btn{
-    background-color: var(--secundary-color);
-    color: var(--primary-color);
     border-color: var(--secundary-color);
-    font-weight: bold;
+    font-weight: 500;
 }
 
-.buttons-home .secundary-btn {
-    background-color: var(--primary-color);
-    color:var(--secundary-color);
+ .buttons-home .secundary-btn {
     border-color: var(--secundary-color);
-    font-weight: 100;
+    font-weight: 600;
 }
 
