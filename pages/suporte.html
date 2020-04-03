@@ -22,28 +22,13 @@
         :link3='links.cadastro'
     ></header-vue>
 
-   <main>
-       <div class="container-form">
-            <div class="container-buttons">
-                <a>Contato</a>
-            </div>
-
-            <form action="">
-                <input type="text" placeholder="Email para contato">
-                <input type="text" placeholder="Assunto">
-                <textarea name="" id="" cols="30" rows="10" placeholder="Mensagem"></textarea>
-                <button class='primary-btn'>Enviar</button>
-            </form>
-
-            
-
-       </div>
-      
+   <main>        
+        <form-suporte></form-suporte>      
    </main>
 
     <footer-vue v-bind:link='links.suporte'></footer-vue>
 </div>
-    <script src="../js/components/auth.js"></script>
+    <script src="../js/components/suporte.js"></script>
     <script src='../js/main.js'></script>
 </body>
 </html>

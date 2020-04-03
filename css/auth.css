@@ -47,4 +47,6 @@ main{
         background-color: rgb(217, 226, 248);
     }
 
-
+header .login-buttons{
+    display: none;
+}
