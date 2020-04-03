@@ -33,9 +33,9 @@ var app = new Vue({
         links : {
             home: 'home.html',
             explorar: '',
-            cadastro: 'auth.html',
-            login: 'auth.html',
-            suporte: '',
+            cadastro: 'auth.html#cadastro',
+            login: 'auth.html#login',
+            suporte: 'suporte.html',
             sobre:'sobre.html',
             novarifa:''
         },
