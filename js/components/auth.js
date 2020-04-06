@@ -47,7 +47,6 @@ Vue.component('form-login', {
             user :'',
             password:'',
             loader: false,
-           
         }
     },
     methods: {
@@ -88,17 +87,68 @@ Vue.component('form-login', {
 Vue.component('form-cadastro',{
     props: ['cadastroVisivel'],
     template:`
-    <form v-if='cadastroVisivel' id='form-cadastro' action="POST">
+    <form v-if='cadastroVisivel' id='form-cadastro' @submit.prevent='submeter'>
         <loader v-if='loader'></loader>
-        <label for=""></label><input placeholder='Usuario' type="text">
-        <label for=""></label><input placeholder='Senha' type="password">
-        <label for=""></label><input placeholder='Repita a senha' type="password">
-        <button class='primary-btn'>Proximo</button>
+        <div :class='part1'>
+        <label for=""></label><input v-model='usuario' placeholder='Usuario' type="text">
+        <label for=""></label><input v-model='senha' placeholder='Senha' type="password">
+        <label for=""></label><input v-model='confirmSenha' placeholder='Repita a senha' type="password">
+        <button class='primary-btn' @click='verificar'>Proximo</button>
+        </div>
+        <div :class='part2'>
+        <input v-model='email' placeholder='E-mail' type='text'>
+        <input v-model='confirmEmail' placeholder='Confirme o e-mail' type='text'>
+        <input v-model='telefone' placeholder='Telefone' type='text'>
+        <input v-model='endereco' placeholder='Endereço' type='text'>
+        <input v-model='cpf' placeholder='CPF' type='text'>
+        <button class='primary-btn' type='submit'>Finalizar</button>
+        </div>
     </form>
     `,
     data: function () {
         return {
-            loader: false
+            part1: '',
+            part2: 'oculto',
+            loader: false,
+
+            usuario:'',
+            senha:'',
+            confirmSenha:'',
+            email:'',
+            confirmEmail:'',
+            telefone:'',
+            endereco:'',
+            cpf:''
+        }
+    },
+    methods: {
+        verificar: function() {
+            this.part1 = 'oculto';
+            this.part2 = '';
+        },
+
+        submeter: function () {
+            
+            var data = {
+                usuario: this.usuario,
+                senha:this.senha,
+                // confirmSenha: this.confirmSenha,
+                email: this.email,
+                // confirmEmail: this.confirmEmail,
+                telefone: this.telefone,
+                endereco: this.telefone,
+                cpf: this.cpf
+            }
+
+            console.log(data);
+
+            axios
+                .post('https://rifando-api.herokuapp.com/cadastro', data)
+                .then(response=> console.log(response))
+                .catch(error=> {
+                    console.log(error);
+                    alert('error');
+                });
         }
     }
 });

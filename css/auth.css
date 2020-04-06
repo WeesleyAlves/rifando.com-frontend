@@ -62,3 +62,13 @@ header .login-buttons{
     display: none;
 } */
 
+form div{
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0;
+    width: 100%;
+}
+
+.oculto{
+    display: none
+}
