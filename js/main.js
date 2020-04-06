@@ -27,6 +27,12 @@ Vue.component('footer-vue', {
     </footer>`
 });
 
+Vue.component('loader',{
+    template: `
+    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    `,
+});
+
 var app = new Vue({
     el: '#app',
     data: {
@@ -51,8 +57,12 @@ var app = new Vue({
                 img1 : '../assets/pessoa1-edt.png',
                 img2 : '../assets/trevos.png',
                 img3 : '../assets/pessoa2-edt.png',
-            }
+            },
+            
+            loading: false,
         },
+
+        
 
         content : {
             home: {
@@ -87,5 +97,8 @@ var app = new Vue({
                 obcaecati sed!`
             }
         }
+    },
+
+    mounted () {
     }
 });

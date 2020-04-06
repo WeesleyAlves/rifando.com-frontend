@@ -35,6 +35,8 @@ main{
         align-items: center;
         padding: 15px 0px;
         font-weight: bold;
+        user-select: none;
+
     }
     
 
@@ -45,8 +47,18 @@ main{
     #desativado{
         color: var(--primary-color);
         background-color: rgb(217, 226, 248);
+        cursor: pointer;
     }
 
 header .login-buttons{
     display: none;
 }
+
+/* #form-login{
+    display: flex;
+}
+
+#form-cadastro{
+    display: none;
+} */
+

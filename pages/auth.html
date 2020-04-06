@@ -6,9 +6,13 @@
     <title>Rifando.com</title>
 
     <script src="../js/vue.js"></script>
+    <script src="../js/axios/axios.min.js"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/auth.css">
+
+
 
 </head>
 <body>
@@ -23,22 +27,13 @@
     ></header-vue>
 
    <main>
-       <div class="container-form">
-            <div class="container-buttons">
-                <a href="#login" id='desativado' >Login</a>
-                <a href="#cadastro" >Cadastro</a>
-            </div>
-
-            <form-login></form-login>
-            <form-cadastro></form-cadastro>
-            
-
-       </div>
+       <container-form></container-form>
       
    </main>
 
     <footer-vue v-bind:link='links.suporte'></footer-vue>
 </div>
+    
     <script src="../js/components/auth.js"></script>
     <script src='../js/main.js'></script>
 </body>
