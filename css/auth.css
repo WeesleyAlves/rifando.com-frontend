@@ -22,7 +22,7 @@ main{
         align-items: center;        
 
         display: flex;
-
+        margin-bottom: 10px;
     }
 
     .container-buttons a{
@@ -65,10 +65,22 @@ header .login-buttons{
 form div{
     display: flex;
     flex-direction: column;
-    padding: 30px 0;
+    /* padding: 30px 0; */
     width: 100%;
 }
 
 .oculto{
     display: none
+}
+
+#form-cadastro {
+    margin-bottom: 10px;
+}
+
+#form-cadastro .terc-btn {
+    margin: 0;
+    padding: 5px;
+    padding-bottom: 10px;
+    text-align: left;
+
 }

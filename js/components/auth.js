@@ -55,30 +55,25 @@ Vue.component('form-login', {
             
             this.loader = true;
 
+            data = {
+                'usuario': this.user,
+                'senha':this.password
+            };
+
             axios
-                // .post('https://rifando-api.herokuapp.com/login',{
-                //     'usuario': 'teste',
-                //     'senha': '1234',
-                //     'email':'wee@x.com',
-                //     'telefone':'00000000000',
-                //     'cpf':'00000000',
-                //     'endereco':'rua x, n 30'
-                // })
-                .post('https://rifando-api.herokuapp.com/login', {
-                    'usuario': 'admin',
-                    'senha':'123'
-                })
-                // .get('https://rifando-api.herokuapp.com/')
+                .post('https://rifando-api.herokuapp.com/login', JSON.stringify(data))
                 .then(response=>{
-                    alert(response.data);
-                    console.log(response.data);
+
+                    alert('Logado! Redirecionando...');
+                    this.loader=false;
+                    localStorage.setItem('rifandoToken', JSON.stringify(response.data.Authorization));
+
                 })
                 .catch(error=>{
                     this.loader=false;
-                    alert(error);
+                    console.log(error);
+                    alert('Usuario ou senha incorretos');
                 });
-
-
         }
     },
 
@@ -87,21 +82,23 @@ Vue.component('form-login', {
 Vue.component('form-cadastro',{
     props: ['cadastroVisivel'],
     template:`
-    <form v-if='cadastroVisivel' id='form-cadastro' @submit.prevent='submeter'>
+    <form v-if='cadastroVisivel' id='form-cadastro' @submit.prevent='filtro2'>
         <loader v-if='loader'></loader>
         <div :class='part1'>
         <label for=""></label><input v-model='usuario' placeholder='Usuario' type="text">
         <label for=""></label><input v-model='senha' placeholder='Senha' type="password">
         <label for=""></label><input v-model='confirmSenha' placeholder='Repita a senha' type="password">
-        <button class='primary-btn' @click='verificar'>Proximo</button>
+        <button class='primary-btn' @click='filtro1'>Proximo</button>
         </div>
         <div :class='part2'>
+        <button class='terc-btn' @click='voltar'>Voltar</button>
         <input v-model='email' placeholder='E-mail' type='text'>
         <input v-model='confirmEmail' placeholder='Confirme o e-mail' type='text'>
         <input v-model='telefone' placeholder='Telefone' type='text'>
         <input v-model='endereco' placeholder='Endereço' type='text'>
         <input v-model='cpf' placeholder='CPF' type='text'>
         <button class='primary-btn' type='submit'>Finalizar</button>
+        
         </div>
     </form>
     `,
@@ -118,37 +115,129 @@ Vue.component('form-cadastro',{
             confirmEmail:'',
             telefone:'',
             endereco:'',
-            cpf:''
+            cpf:'',
+            confirm1: false,
+            confirm2: false,
         }
     },
     methods: {
-        verificar: function() {
-            this.part1 = 'oculto';
-            this.part2 = '';
+        voltar: function() {
+            this.part1 = '';
+            this.part2 = 'oculto';
+        },
+        filtro1: function() {
+            var error = false;
+            
+            if(this.usuario.length <= 3){
+                error = 'O seu nome de usuario deve ter no minimo 4 caracteres';
+            }else if(this.senha.length <= 4){
+                error = 'Sua senha deve ter no minimo 5 caracteres';
+            }else if(this.senha != this.confirmSenha){
+                error = 'Sua verificação de senha deve ser igual a sua senha';
+            }
+            
+            else{
+                this.part1 = 'oculto';
+                this.part2 = '';
+                this.confirm1 = true;
+            }
+
+            if(error != false){
+                alert(error);
+            }
+
+        },
+
+        filtro2: function() {
+            var error = false;
+            var emailValido = false;
+
+            if(this.email.length != ''){
+                var email = this.email;
+                var usuario = email.substring(0, email.indexOf("@"));
+                var dominio = email.substring(email.indexOf("@")+ 1, email.length);
+
+                if ((usuario.length >=1) &&
+                    (dominio.length >=3) && 
+                    (usuario.search("@")==-1) && 
+                    (dominio.search("@")==-1) &&
+                    (usuario.search(" ")==-1) && 
+                    (dominio.search(" ")==-1) &&
+                    (dominio.search(".")!=-1) &&      
+                    (dominio.indexOf(".") >=1)&& 
+                    (dominio.lastIndexOf(".") < dominio.length - 1)){
+                        emailValido = true;
+                    }
+                else{
+                    error = 'Insira um e-mail valido';
+                }
+            }
+
+            if(emailValido == true){
+                if(this.email != this.confirmEmail){
+                    error = 'A confirmação de e-mail deve ser igual ao e-mail inserido';
+                }else if(this.telefone == '') {
+                    error = 'Insira um telefone valido';
+                }else if(this.endereco == '') {
+                    error= 'Insira um endereço valido';
+                }else if(this.cpf == ''){
+                    error = 'Insira um CPF valido';
+                }
+                
+                else{
+                    this.confirm2 = true;
+                    this.submeter();
+                }
+            }
+
+            if(error != false){
+                alert(error);
+            }
+
         },
 
         submeter: function () {
             
-            var data = {
-                usuario: this.usuario,
-                senha:this.senha,
-                // confirmSenha: this.confirmSenha,
-                email: this.email,
-                // confirmEmail: this.confirmEmail,
-                telefone: this.telefone,
-                endereco: this.telefone,
-                cpf: this.cpf
+            var data = {};
+            
+            if(this.confirm1 === true && this.confirm2 === true){
+
+                this.loader = true;
+                this.part2 = 'oculto';
+                data = {
+                    'usuario': this.usuario,
+                    'senha':this.senha,
+                    'email': this.email,
+                    'telefone': this.telefone,
+                    'endereco': this.telefone,
+                    'cpf': this.cpf
+                }
+
+                console.log(JSON.stringify(data));
+
+                axios
+                    .post('https://rifando-api.herokuapp.com/cadastro', data)
+                    .then(response=> {
+                        alert('Cadastrado com sucesso!');
+                        console.log(response);
+                        this.loader = false;
+                        this.part2 = 'oculto';
+                        this.part1 = '';
+                    })
+                    .catch(error=> {
+                        alert('Erro ao realizar o cadastro!');
+                        console.log(error);
+                        this.loader = false;
+                        this.part2 = '';
+                    });
+
+            }else if(this.confirm1 == false){
+                this.voltar();
+                this.filtro1();
+            }else if(this.confirm1 == true && this.confirm2 == false){
+                this.filtro2();
             }
-
-            console.log(data);
-
-            axios
-                .post('https://rifando-api.herokuapp.com/cadastro', data)
-                .then(response=> console.log(response))
-                .catch(error=> {
-                    console.log(error);
-                    alert('error');
-                });
+            
         }
     }
 });

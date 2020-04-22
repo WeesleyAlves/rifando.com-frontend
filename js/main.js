@@ -43,7 +43,7 @@ var app = new Vue({
             login: 'auth.html#login',
             suporte: 'suporte.html',
             sobre:'sobre.html',
-            novarifa:''
+            novarifa:'nova-rifa.html'
         },
 
         assets: {
