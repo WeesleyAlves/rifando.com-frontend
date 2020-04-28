@@ -24,7 +24,48 @@
     ></header-vue>
 
     <main>
+        <form action="">
+            <h3>Formulario da nova rifa</h3>
+            <div>
+                <h4>1. Informações basicas sobre sua nova rifa</h4>
+                <input type="text" placeholder="Titulo da sua rifa">
+                <select name="" id="">
+                    <option value="" selected disabled hidden>Categoria</option>
+                </select>
+                <textarea name="" id="" cols="30" rows="10" placeholder="Descrição da sua rifa"></textarea>
+            </div>
 
+            <div>
+                <h4>2. Infomações sobre bilhetes</h4>
+                <input type="text" placeholder="Total de bilhetes. Ex: 100">
+                <input type="text" placeholder="Valor de cada bilhete. Ex: 150,00">
+            </div>
+
+            <div class='data-form'>
+                <h4>3. Data do sorteio</h4>
+                    <div>
+                        <select name="" id="">
+                            <option value="" selected disabled hidden>Dia</option>
+                        </select>/
+                        <select name="" id="">
+                            <option value="" selected disabled hidden>Mês</option>
+                        </select>/
+                        <select name="" id="">
+                            <option value="" selected disabled hidden>Ano</option>
+                        </select>
+                    </div>
+            </div>
+
+            <div class='imagens-form'>
+                <h4>4. Imagens do prêmio</h4>
+                <p>Selecione imagens para ilustrar o prêmio da sua rifa</p>
+
+                <input type="file" src="" alt="" multiple>
+                
+            </div>
+
+            <input type="submit" value="Criar Rifa" class='primary-btn'>
+        </form>
     </main>
 
 
