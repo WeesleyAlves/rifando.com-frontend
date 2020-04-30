@@ -100,13 +100,51 @@ Vue.component('form-rifa',{
             }
 
             if(error == false ){
-                alert('Sucesso');
+                this.submit();
             }else{
                 alert(error);
             }
         },
         teste : function(){
-            console.log(document.getElementById('imagens').files.length);
+            console.log(document.getElementById('imagens').files);
+        },
+        submit: function() {
+            var data = {
+                titulo : this.titulo,
+                categoria : this.categoria,
+                descricao : this.descricao,
+                totalBilhetes : this.totalBilhetes,
+                valor : this.valor,
+                dia : this.dia,
+                mes : this.mes,
+                ano : this.ano,
+               // imagens : document.getElementById('imagens').files
+            }
+
+            if(localStorage.getItem('rifandoToken')){
+                var token = localStorage.getItem('rifandoToken');
+                token = JSON.parse(token);
+                axios
+                .post('https://rifando-api.herokuapp.com/rifa/1', 
+                    JSON.stringify(data),
+                    { headers: 
+                         { 'Authorization': token,
+                              'Content-Type': 'application/json'
+                        }
+                    }
+                )
+                .then(response=>{
+                    alert('sucesso');
+                    console.log(response);
+                })
+                .catch(error=> {
+                    console.log(error);
+                    alert(error);
+                });
+            }else{
+                alert('Token invalido!');
+            }
+
         }
     },
     mounted: function () {

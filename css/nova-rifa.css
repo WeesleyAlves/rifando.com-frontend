@@ -6,6 +6,10 @@ main {
     height: auto;
 }
 
+header .login-buttons {
+    display: none;
+}
+
 form{
     margin: auto;
     display: flex;
