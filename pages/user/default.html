@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifando.com</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="../../js/vue.js"></script>
+    <script src="../../js/axios/axios.min.js"></script>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/user.css">
+    <link rel="stylesheet" href="../../css/user/rifas.css">
+
+</head>
+<body>
+
+<div id="app">
+    <header-vue
+        :logo='assets.user.logoheader'
+        :link-home='links.user.home'
+        :link1='links.user.explorar'
+        :link2='links.user.login'
+        :link3='links.user.cadastro'
+    ></header-vue>
+
+    <main>
+        <menu-lateral></menu-lateral>
+        
+    </main>
+
+
+    <footer-vue v-bind:link='links.user.suporte'></footer-vue>
+
+</div>
+    
+
+
+    <script src="../../js/components/user.js"></script>
+    <script src="../../js/components/user/view.js"></script>
+    <script src="../../js/main.js"></script>
+</body>
+</html>

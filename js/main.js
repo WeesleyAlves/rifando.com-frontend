@@ -44,6 +44,16 @@ var app = new Vue({
             suporte: 'suporte.html',
             sobre:'sobre.html',
             novarifa:'nova-rifa.html'
+            ,
+            user:{
+                home: '../home.html',
+                explorar: '',
+                cadastro: '../auth.html#cadastro',
+                login: '../auth.html#login',
+                suporte: '../suporte.html',
+                sobre:'../sobre.html',
+                novarifa:'../nova-rifa.html'
+            }
         },
 
         assets: {
@@ -57,6 +67,9 @@ var app = new Vue({
                 img1 : '../assets/pessoa1-edt.png',
                 img2 : '../assets/trevos.png',
                 img3 : '../assets/pessoa2-edt.png',
+            },
+            user: {
+                logoheader: '../../assets/logo.png'
             },
             
             loading: false,

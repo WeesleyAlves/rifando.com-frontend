@@ -64,10 +64,9 @@ Vue.component('form-login', {
                 .post('https://rifando-api.herokuapp.com/login', JSON.stringify(data))
                 .then(response=>{
 
-                    alert('Logado! Redirecionando...');
                     this.loader=false;
                     localStorage.setItem('rifandoToken', JSON.stringify(response.data.Authorization));
-
+                    window.location.replace('../../pages/user/bilhetes.html');
                 })
                 .catch(error=>{
                     this.loader=false;
