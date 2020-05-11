@@ -1,11 +1,11 @@
 Vue.component('form-rifa',{
     template: `
-    <form  method='post' @submit.prevent='validar'>
+    <form  name='formrifa' action='https://rifando-api.herokuapp.com/rifa/upload' method='post' @submit.prevent='validar' enctype='multipart/form-data'>
             <h3>Formulario da nova rifa</h3>
             <div>
                 <h4>1. Informações basicas sobre sua nova rifa</h4>
-                <input v-model='titulo' type="text" placeholder="Titulo da sua rifa">
-                <select name="" id="" v-model='categoria'>
+                <input v-model='titulo' name='titulo' type="text" placeholder="Titulo da sua rifa">
+                <select name="categoria" id="" v-model='categoria'>
                     <option value="" selected disabled hidden>Categoria</option>
                     <option value="Brinquedos">Brinquedos</option>
                     <option value="Casas">Casa</option>
@@ -13,22 +13,22 @@ Vue.component('form-rifa',{
                     <option value="Esportiva">Esportiva</option>
                     <option value="Outra">Outra</option>
                 </select>
-                <textarea v-model='descricao' name="" id="" cols="30" rows="10" placeholder="Descrição da sua rifa"></textarea>
+                <textarea v-model='descricao' name="descricao" id="" cols="30" rows="10" placeholder="Descrição da sua rifa"></textarea>
             </div>
 
             <div>
                 <h4>2. Infomações sobre bilhetes</h4>
-                <input v-model.number='totalBilhetes' type="number" placeholder="Total de bilhetes. Ex: 100">
-                <input v-model.number='valor' type="number" placeholder="Valor de cada bilhete. Ex: 150,00">
+                <input name='totalBilhetes' v-model.number='totalBilhetes' type="number" placeholder="Total de bilhetes. Ex: 100">
+                <input name='valor' v-model.number='valor' type="number" placeholder="Valor de cada bilhete. Ex: 150,00">
             </div>
 
             <div class='data-form'>
                 <h4>3. Data do sorteio</h4>
                     <div>
-                        <select v-model='dia' name="" id="dia">
+                        <select v-model='dia' name="dia" id="dia">
                             <option value="" selected disabled hidden>Dia</option>
                         </select>/
-                        <select v-model='mes' name="" id="">
+                        <select name='mes' v-model='mes' id="">
                             <option value="" selected disabled hidden>Mês</option>
                             <option value="Janeiro">Janeiro</option>
                             <option value="Fevereiro">Fevereiro</option>
@@ -43,7 +43,7 @@ Vue.component('form-rifa',{
                             <option value="Novembro">Novembro</option>
                             <option value="Dezembro">Dezembro</option>
                         </select>/
-                        <select v-model='ano' name="" id="ano">
+                        <select name='ano' v-model='ano' id="ano">
                             <option value="" selected disabled hidden>Ano</option>
                         </select>
                     </div>
@@ -53,7 +53,7 @@ Vue.component('form-rifa',{
                 <h4>4. Imagens do prêmio</h4>
                 <p>Selecione imagens para ilustrar o prêmio da sua rifa</p>
 
-                <input id = 'imagens' type="file" src="" alt="" multiple>
+                <input id = 'imagens' name='imagens' type="file" src="" alt="" multiple>
                 
             </div>
   
@@ -100,6 +100,8 @@ Vue.component('form-rifa',{
             }
 
             if(error == false ){
+                console.log(document.formrifa);
+                // document.formrifa.submit();
                 this.submit();
             }else{
                 alert(error);
@@ -109,27 +111,18 @@ Vue.component('form-rifa',{
             console.log(document.getElementById('imagens').files);
         },
         submit: function() {
-            var data = {
-                titulo : this.titulo,
-                categoria : this.categoria,
-                descricao : this.descricao,
-                totalBilhetes : this.totalBilhetes,
-                valor : this.valor,
-                dia : this.dia,
-                mes : this.mes,
-                ano : this.ano,
-               // imagens : document.getElementById('imagens').files
-            }
+            var data = new FormData(document.formrifa);
 
+            console.log(data);
             if(localStorage.getItem('rifandoToken')){
                 var token = localStorage.getItem('rifandoToken');
                 token = JSON.parse(token);
                 axios
                 .post('https://rifando-api.herokuapp.com/rifa/1', 
-                    JSON.stringify(data),
+                data,
                     { headers: 
-                         { 'Authorization': token,
-                              'Content-Type': 'application/json'
+                         { 
+                            'Authorization': token
                         }
                     }
                 )
